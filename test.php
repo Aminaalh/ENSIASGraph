@@ -2,10 +2,10 @@
 <?php
  require 'connexion.php';
  require 'function.php' ;
- 
+//  ob_start();
 $graph=new chart();
 // array for drawing the graph
-$array = [2014 => 40, 2012 => 15, 2016 =>15, 2013 => 20, 2015 => 10];
+$array = [2014 => 25,2015 => 10, 2016 => 20, 2012 => 30, 2013 => 15];
 $bool = true;
 
 // recover data from user
@@ -31,12 +31,16 @@ if(isset($_POST['submit'])) {
     if($type_graph == "pie" || $bool == true){
       $echo = $graph->drawGraph($title,$color_bg,$color_axe,$axe_x,$axe_y,$color_cb,$type_graph,$color_text,$array);
       echo $echo;
+      
   }
     
  }
-
-
+ 
 echo "<br><a href='config.php'>Home Page</a>"; // return to the home page
 echo "<br><a href='capture.php'>Take a screen</a>";
 
+
+
+
 ?>
+

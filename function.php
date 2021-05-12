@@ -139,6 +139,7 @@
             $sum += $value;
             $sumValues[] = $sum;
         }
+        if($sum == 100){
         echo'
         <svg viewBox="0 0 64 64" class="pie">
         ';
@@ -151,7 +152,7 @@
           $rand3=rand(0,250);
           $color="rgb($rand1,$rand2,$rand3)";
           // draw the pie
-            echo '<circle r="25%" cx="50%" cy="50%" style="stroke-dasharray: '.$value[$i].' 100; stroke: '.$color.'; stroke-dashoffset: -'.$sumValues[$i].';">
+            echo '<circle r="25%" cx="50%" cy="50%" style="stroke-dasharray: '.($values[$i]+10).' 100; stroke: '.$color.'; stroke-dashoffset: -'.$sumValues[$i].';animation-delay: 0.25s">
             </circle>
             ';
             $tabColor[] = $color; 
@@ -180,7 +181,6 @@
         </style>';
         // this part is for generate the legend of the pie
         for($i = 0; $i < count($values); $i++) {
-            $c = $tabColor[$i];
             echo '
             <div class="canvas">  
                 <div class="legend">  
@@ -242,7 +242,9 @@
             </style>
             ';
         }
-             
+    }else{
+        echo 'Impossible! the sum of values must equal to 100';
+    }    
             
         }
 
